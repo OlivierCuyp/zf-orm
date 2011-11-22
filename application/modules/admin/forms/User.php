@@ -41,6 +41,13 @@ class Admin_Form_User extends Zend_Form {
 				array('StringLength', array('min' => 2, true, 'max' => 255))
 			));
 		$this->addElement($element);
+		
+		// Submit element
+		$element = new Zend_Form_Element_Submit('submit');
+		$element->setLabel('Save')
+			->setRequired(false)
+			->setIgnore(true);
+		$this->addElement($element);
 	}
 }
 

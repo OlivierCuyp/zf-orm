@@ -1,1 +1,14 @@
-<h1>Hello world 2</h1>
+<h1>Blog posts</h1>
+<div  id="posts">
+<? foreach($this->posts as $post) : ?>
+	<div class="post" style="border: 1px solid; margin-top: 12px;">
+		<h3>Posted by <a href="<?= $this->url(array('id' => $post->author->id , 'action' => 'user', 'controller' => 'index'), 'default', true); ?>"><?= $post->author->nickname ?></a> the <?= $post->creationDate ?></h2>
+		<p><strong>Labels: </strong>
+		<? foreach($post->labels as $index => $label) : ?>
+			<span><?= $label->text . ($index < count($post->labels) - 1 ? ', ': '') ?></span>
+		<? endforeach ?>
+		</p>
+		<p><?= $post->text ?></p>
+	</div>
+<? endforeach ?>
+</div>

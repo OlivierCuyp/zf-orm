@@ -4,16 +4,6 @@ class Model_Mapper_Users extends Model_Mapper_Abstract {
 	protected $_entityClass = 'Model_User';
 	protected $_formClass = 'Admin_Form_User';
 	
-	protected $_DependenciesMap = array(
-		'post' => array(
-			'mapperClass' => 'Model_Mapper_Post',
-			'mapper' => null,
-			'method' => 'fetchByAuthor',
-			// Since all the posts of the users might be bing and not necessary
-			'earlyLoad' => false
-		)
-	);
-	
 	// Redefine fetchParams to set a default order
 	protected $_fetchParams = array(
 		'order' => 'email asc',

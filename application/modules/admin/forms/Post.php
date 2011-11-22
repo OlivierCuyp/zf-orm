@@ -15,9 +15,23 @@ class Admin_Form_Post extends Zend_Form {
 			->removeDecorator('Label');
 		$this->addElement($element);
 		
+		// IdAuthor element
+		$options = array();
+		$usersMapper = Model_Mapper_Core::deliver('Model_Mapper_Users');
+		$users = $usersMapper->fetchAll();
+		foreach ($users as $user) {
+			$options[$user->id] = $user->nickname;
+		}
+		
+		$element = new Zend_Form_Element_Select('idAuthor');
+		$element->setLabel('Author')
+			->setMultiOptions($options)
+			->setRequired(true);
+		$this->addElement($element);
+		
 		// Text element
-		$element = new Zend_Form_Element_Text('text');
-		$element->setLabel('Label')
+		$element = new Zend_Form_Element_Textarea('text');
+		$element->setLabel('Text')
 			->setAttribs(array(
 				'class' => 'wideInput'
 			))
@@ -45,6 +59,12 @@ class Admin_Form_Post extends Zend_Form {
 			)
 		);
 		
+		// Submit element
+		$element = new Zend_Form_Element_Submit('submit');
+		$element->setLabel('Save')
+			->setRequired(false)
+			->setIgnore(true);
+		$this->addElement($element);
 	}
 }
 

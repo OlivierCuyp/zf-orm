@@ -13,14 +13,7 @@ class Model_Mapper_Posts extends Model_Mapper_Abstract {
 		)
 	);
 	
-	// Redefine fetchParams to set a default order
-	protected $_fetchParams = array(
-			'order' => 'creationDate desc',
-			'limit' => null,
-			'page' => null
-	);
-	
-	protected $_DependenciesMap = array(
+	protected $_dependenciesMap = array(
 		'labels' => array(
 			'mapperClass' => 'Model_Mapper_Labels',
 			'mapper' => null,
@@ -30,7 +23,14 @@ class Model_Mapper_Posts extends Model_Mapper_Abstract {
 	);
 	
 	protected $_fetchOptions = array(
-    	'idUser' => null
+    	'idAuthor' => null
+	);
+	
+	// Redefine fetchParams to set a default order
+	protected $_fetchParams = array(
+			'order' => 'creationDate desc',
+			'limit' => null,
+			'page' => null
 	);
 	
 	protected function _manageFetchOptions($select, $options) {

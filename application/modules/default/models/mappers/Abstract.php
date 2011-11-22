@@ -555,11 +555,11 @@ abstract class Model_Mapper_Abstract {
     	$data = $entity->toArray();
     	
     	// TODO: Check if it really works
-    	/*foreach($entity->getAttributes() as $attribute) {
+    	foreach($entity->getAttributes() as $attribute) {
     		if(!$this->_isReference($attribute) && !$this->_isDependence($attribute)) {
     			$data[$attribute] = $entity->{$attribute};
     		}
-    	}*/
+    	}
     	$form = $this->getForm();
     	$form->populate($data);
     }

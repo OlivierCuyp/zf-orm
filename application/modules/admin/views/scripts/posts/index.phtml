@@ -1,0 +1,15 @@
+<table style="border: 1px solid;">
+	<tr>
+		<td colspan="3"><a href="<?= $this->url(array('action' => 'add', 'controller' => 'posts', 'module' => 'admin'), 'default', true) ?>">Add new</a></td>
+	</tr>
+	<? foreach($this->posts as $post) : ?>
+	<tr>
+		<td><?= $post->text ?></td>
+		<td><a href="<?= $this->url(array('id' => $post->id, 'action' => 'update', 'controller' => 'posts', 'module' => 'admin'), 'default', true) ?>">update</a></td>
+		<td><a href="<?= $this->url(array('id' => $post->id, 'action' => 'delete', 'controller' => 'posts', 'module' => 'admin'), 'default', true) ?>">delete</a></td>
+	</tr>
+	<? endforeach ?>
+	<tr>
+		<td colspan="3"><a href="<?= $this->url(array('action' => 'add', 'controller' => 'posts', 'module' => 'admin'), 'default', true) ?>">Add new</a></td>
+	</tr>
+</table>
