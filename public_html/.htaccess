@@ -1,0 +1,16 @@
+<LIMIT GET POST>
+Options -Indexes
+</LIMIT>
+AuthType Basic
+
+# Sets the environement of the application
+SetEnv APPLICATION_ENV development
+
+RewriteEngine On
+
+# Point to index.php if the file doesn't exist
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
