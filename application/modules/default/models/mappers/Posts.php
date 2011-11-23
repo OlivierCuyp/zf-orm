@@ -43,4 +43,9 @@ class Model_Mapper_Posts extends Model_Mapper_Abstract {
     	$options['idAuthor'] = $idAuthor;
     	return $this->fetchAll($options, $params);
     }
+    
+    public function countByAuthor($idAuthor, $options = array()) {
+    	$options['idAuthor'] = $idAuthor;
+    	return $this->count($options);
+    }
 }

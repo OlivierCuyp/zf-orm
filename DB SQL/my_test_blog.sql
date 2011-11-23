@@ -3,21 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2011 at 07:05 PM
+-- Generation Time: Nov 23, 2011 at 10:53 AM
 -- Server version: 5.1.50
 -- PHP Version: 5.2.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
 -- Database: `my_test_blog`
 --
+DROP DATABASE `my_test_blog`;
+CREATE DATABASE `my_test_blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `my_test_blog`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `labels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `text` varchar(1024) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `labels`
@@ -55,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idAuthor` (`idAuthor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `posts`
@@ -101,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nickname` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`
@@ -118,5 +115,5 @@ INSERT INTO `users` (`id`, `email`, `nickname`) VALUES
 -- Constraints for table `posts_labels`
 --
 ALTER TABLE `posts_labels`
-  ADD CONSTRAINT `posts_labels_ibfk_2` FOREIGN KEY (`idLabel`) REFERENCES `labels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `posts_labels_ibfk_1` FOREIGN KEY (`idPost`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `posts_labels_ibfk_1` FOREIGN KEY (`idPost`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `posts_labels_ibfk_2` FOREIGN KEY (`idLabel`) REFERENCES `labels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

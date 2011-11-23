@@ -16,8 +16,9 @@ class IndexController extends Zend_Controller_Action {
 		}
 		
 		$usersMapper = Model_Mapper_Core::deliver('Model_Mapper_Users');
-		$user = $usersMapper->find($id);
+		$postsMapper = Model_Mapper_Core::deliver('Model_Mapper_Posts');
 		
-		$this->view->user = $user;
+		$this->view->user = $usersMapper->find($id);
+		$this->view->postCount = $postsMapper->countByAuthor($id);
 	}
 }
