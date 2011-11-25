@@ -615,7 +615,7 @@ abstract class Model_Mapper_Abstract {
 				}
 			}
 			// Post-save hook
-			foreach ($this->_preSaveBehaviors as $postSaveMethod) {
+			foreach ($this->_postSaveBehaviors as $postSaveMethod) {
 				$this->{$postSaveMethod}($entity, $filteredData);
 			}
 		}
